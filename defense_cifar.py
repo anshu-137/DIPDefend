@@ -7,7 +7,7 @@ from models import *
 import torch
 import torch.optim
 
-from skimage.measure import compare_psnr
+from skimage.measure import peak_signal_noise_ratio
 from utils.denoising_utils import *
 import torch
 from torch.autograd import Variable
@@ -55,7 +55,9 @@ def adapative_psnr(img1, img2, size=32):
         for j in range(int(w // size)):
             img1_part = img1[:, i*size:(i+1)*size, j*size:(j+1)*size]
             img2_part = img2[:, i*size:(i+1)*size, j*size:(j+1)*size]
-            psnr.append(compare_psnr(img1_part, img2_part))
+            psnr.append(
+              
+              (img1_part, img2_part))
             area_cnt += 1
     psnr = np.array(psnr).min()
     return psnr
