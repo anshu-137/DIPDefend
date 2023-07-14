@@ -7,7 +7,7 @@ from models import *
 import torch
 import torch.optim
 
-from skimage.measure import peak_signal_noise_ratio
+from skimage.metrics import peak_signal_noise_ratio
 from utils.denoising_utils import *
 import torch
 from torch.autograd import Variable
